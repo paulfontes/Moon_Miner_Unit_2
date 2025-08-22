@@ -2,7 +2,9 @@ let cheese = 1000;
 
 
  let totalCheeseElm = document.getElementById('total-cheese')
+ let perClickCheeseElm = document.getElementById('cheese-per-click')
  let totalPickAxes = document.getElementById('total-pickaxes')
+
 
  let clickUpgrades = [
     {
@@ -30,6 +32,7 @@ let cheese = 1000;
     drawTotalCheese ()
     console.log('purchased')
     totalPickAxes.innerHTML = `Total Pickaxes: ${clickUpgrades[0].quantity}`
+    perClickCheeseElm.innerHTML = `Cheese Per Click: ${clickUpgrades[0].bonus}`
     }
  }
 
@@ -51,6 +54,10 @@ function updateCheese () {
 function drawTotalCheese () {
     totalCheeseElm.innerHTML = `Total Cheese: ${cheese}`
 }
+
+// function drawCheesePerClick() = {
+    
+// }
 
 // function drawPickAxe() {
 //     totalPickAxes.innerHTML = `Total Pickaxes: ${}`
