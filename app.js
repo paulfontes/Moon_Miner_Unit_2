@@ -59,7 +59,7 @@ function mine(){
 
 
 function buyRover(howMuch, upBy){
-    if( cheese >= 1000){
+    if( cheese >= howMuch){
         automaticUpgrades.find((upgrade) => upgrade.quantity += upBy),
         cheese -= howMuch
      automaticUpgrades.find((upgrade) => upgrade.bonus = 20 * upgrade.quantity)
