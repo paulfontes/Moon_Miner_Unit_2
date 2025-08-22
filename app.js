@@ -44,6 +44,20 @@ function mine(){
     
 } 
 
+function collectAutoUpgrades() {
+
+    if(clickUpgrades[0].quantity >= 10){
+
+    automaticUpgrades.find((upgrade) => upgrade.bonus *= upgrade.quantity)
+
+    cheese += automaticUpgrades[0].bonus
+
+    drawTotalCheese ()
+    }
+}
+
+setInterval(collectAutoUpgrades, 3000)
+
 function updateCheese () {
     let totalCheese = 0
     totalCheese = cheese
