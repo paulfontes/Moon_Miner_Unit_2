@@ -1,10 +1,11 @@
-let cheese = 1000;
+let cheese = 200;
 
 
  let totalCheeseElm = document.getElementById('total-cheese')
  let perClickCheeseElm = document.getElementById('cheese-per-click')
  let totalPickAxes = document.getElementById('total-pickaxes')
-
+ let totalRoversElm = document.getElementById('total-rovers')
+ let roverPassiveIncomeElm = document.getElementById('passive-rover')
 
  let clickUpgrades = [
     {
@@ -36,6 +37,18 @@ let cheese = 1000;
     }
  }
 
+ function buyPickaxe5() {
+     if(cheese > 500){
+     clickUpgrades.find((pickaxe) => pickaxe.quantity += 5)
+     clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
+     clickUpgrades.find((price) => cheese -= price.price * 5)
+    drawTotalCheese ()
+    console.log('purchased')
+    totalPickAxes.innerHTML = `Total Pickaxes: ${clickUpgrades[0].quantity}`
+    perClickCheeseElm.innerHTML = `Cheese Per Click: ${clickUpgrades[0].bonus}`
+    }
+ }
+
 function mine(){
     clickUpgrades.find ((upgrade) => cheese += upgrade.bonus )
     // cheese += 1
@@ -44,17 +57,36 @@ function mine(){
     
 } 
 
+
+function buyRover(howMuch, upBy){
+    if( cheese >= 1000){
+        automaticUpgrades.find((upgrade) => upgrade.quantity += upBy),
+        cheese -= howMuch
+     automaticUpgrades.find((upgrade) => upgrade.bonus = 20 * upgrade.quantity)
+    
+    drawTotalCheese ()
+    drawPassiveRoverIncome()
+    totalRoversElm.innerHTML = `Total Rovers: ${automaticUpgrades[0].quantity}`
+}
+}
+
 function collectAutoUpgrades() {
 
     if(clickUpgrades[0].quantity >= 10){
-
-    automaticUpgrades.find((upgrade) => upgrade.bonus *= upgrade.quantity)
-
-    cheese += automaticUpgrades[0].bonus
-
-    drawTotalCheese ()
+        let bonusRoverIncome = 0
+        automaticUpgrades.find((upgrade) => bonusRoverIncome = 20 * upgrade.quantity)
+        
+        cheese += bonusRoverIncome
+        drawTotalCheese ()
+        drawPassiveRoverIncome()
     }
+    
 }
+// if (howMuch > 4000){
+// automaticUpgrades.find((upgrade) => upgrade.quantity += 4),
+// cheese -= howMuch
+// }
+
 
 setInterval(collectAutoUpgrades, 3000)
 
@@ -69,6 +101,9 @@ function drawTotalCheese () {
     totalCheeseElm.innerHTML = `Total Cheese: ${cheese}`
 }
 
+function drawPassiveRoverIncome () {
+    roverPassiveIncomeElm.innerHTML = `Passive Rover Income: ${automaticUpgrades[0].bonus}`
+}
 // function drawCheesePerClick() = {
     
 // }
