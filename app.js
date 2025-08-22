@@ -1,4 +1,4 @@
-let cheese = 200;
+let cheese = 400;
 
 
  let totalCheeseElm = document.getElementById('total-cheese')
@@ -25,15 +25,15 @@ let cheese = 200;
     }
  ]
 
- function buyPickaxe() {
-     if(cheese > 100){
+ function buyPickaxe(pricePickaxe) {
+     if(cheese >= pricePickaxe){
      clickUpgrades.find((pickaxe) => pickaxe.quantity += 1)
      clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
      clickUpgrades.find((price) => cheese -= price.price)
     drawTotalCheese ()
     console.log('purchased')
-    totalPickAxes.innerHTML = `Total Pickaxes: ${clickUpgrades[0].quantity}`
-    perClickCheeseElm.innerHTML = `Cheese Per Click: ${clickUpgrades[0].bonus}`
+    totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
+    perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
     }
  }
 
@@ -44,8 +44,8 @@ let cheese = 200;
      clickUpgrades.find((price) => cheese -= price.price * 5)
     drawTotalCheese ()
     console.log('purchased')
-    totalPickAxes.innerHTML = `Total Pickaxes: ${clickUpgrades[0].quantity}`
-    perClickCheeseElm.innerHTML = `Cheese Per Click: ${clickUpgrades[0].bonus}`
+    totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
+    perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
     }
  }
 
@@ -54,7 +54,7 @@ function mine(){
     // cheese += 1
     // console.log(cheese)
     updateCheese ()
-    
+    endGame()
 } 
 
 
@@ -66,7 +66,7 @@ function buyRover(howMuch, upBy){
     
     drawTotalCheese ()
     drawPassiveRoverIncome()
-    totalRoversElm.innerHTML = `Total Rovers: ${automaticUpgrades[0].quantity}`
+    totalRoversElm.innerHTML = `Total Heart of Golds: ${automaticUpgrades[0].quantity}`
 }
 }
 
@@ -88,7 +88,7 @@ function collectAutoUpgrades() {
 // }
 
 
-setInterval(collectAutoUpgrades, 3000)
+setInterval(collectAutoUpgrades, 1500)
 
 function updateCheese () {
     let totalCheese = 0
@@ -98,18 +98,27 @@ function updateCheese () {
 }
 
 function drawTotalCheese () {
-    totalCheeseElm.innerHTML = `Total Cheese: ${cheese}`
+    totalCheeseElm.innerHTML = `Total Gold: ${cheese}`
 }
 
 function drawPassiveRoverIncome () {
-    roverPassiveIncomeElm.innerHTML = `Passive Rover Income: ${automaticUpgrades[0].bonus}`
+    roverPassiveIncomeElm.innerHTML = `Passive Heart of Gold Income: ${automaticUpgrades[0].bonus}`
 }
+
+function endGame() {
+    if(cheese >= 25000){
+    window.alert('Bro stop playing you won already!')
+    window.close()
+    }
+}
+
+
 // function drawCheesePerClick() = {
     
 // }
 
 // function drawPickAxe() {
-//     totalPickAxes.innerHTML = `Total Pickaxes: ${}`
+//     totalPickAxes.innerHTML = `Total Champions: ${}`
 // }
 
 

@@ -16,35 +16,36 @@
     <main class="container">
       <section class="row justify-content-center">
         <div class="col-5">
-          <img onclick="mine()" class="img-fluid moon" src="https://pngimg.com/uploads/moon/moon_PNG21.png">
+          <img onclick="mine()" class="img-fluid moon" src="https://art.ngfiles.com/medium_views/543000/543150_hamzilla15_baron-pixel-art-league-of-legends-fanart.png?f1503835216">
         </div>
       </section>
       <section class="row justify-content-center mb-2 gap-1">
-        <div class="col-5 border text-white fw-bold fs-5">
-          <span id="total-cheese">Total Cheese: 200</span>
+        <div class="col-5 border text-white fw-bold fs-5  rounded">
+          <span id="total-cheese">Total Gold: 400</span>
         </div>
-        <div class="col-5 border text-white fw-bold fs-5">
-          <span id="cheese-per-click" >Cheese Per Click: 1</span>
+        <div class="col-5 border text-white fw-bold fs-5 rounded">
+          <span id="cheese-per-click" >Gold Per Click: 1</span>
         </div>
       </section>
-      <section class="row justify-content-around mb-2">
-        <div class="col-4 border text-white">
-          <span id="total-pickaxes">Total Pickaxes: 1</span>
+      <section class="row justify-content-around mb-2 champion-img">
+        <div class="col-4 border text-white rounded ">
+          <span id="total-pickaxes">Total Champions: 1</span>
+          <p> Get to 10 Champions to unlock a HoG that work for you!</p>
         </div>
-        <button onclick="buyPickaxe()" class="col-2 btn btn-danger">
-          <span>100 Cheese:  Pickaxe +1</span>
-        <button onclick="buyPickaxe5()" class="col-2 btn btn-danger">
-          <span>500 Cheese:  Pickaxe +5</span>
+        <button onclick="buyPickaxe(100)" class="col-2 btn btn-danger rounded">
+          <span>100 Gold:  Champions +1</span>
+        <button onclick="buyPickaxe5()" class="col-2 btn btn-danger rounded">
+          <span>500 Gold:  Champions +5</span>
       </section>
-      <section class="row justify-content-around">
-        <div class="col-4 border text-white text-">
-          <span id="total-rovers">Total Rovers: 1</span>
-          <p id="passive-rover">Passive Rover Income: 0</p>
+      <section class="row justify-content-around heart">
+        <div class="col-4 border text-white rounded">
+          <span id="total-rovers">Total Heart of Golds: 1</span>
+          <p id="passive-rover">Passive Heart of Gold Income: 0</p>
         </div>
         <button onclick="buyRover(1000, 1)" class="col-2 btn btn-danger">
-          <span>1k Cheese:  Rover +1</span>
+          <span>1k Gold:  Heart of Gold +1</span>
         <button onclick="buyRover(5000, 5)" class="col-2 btn btn-danger">
-          <span>5k Cheese:  Rover +5</span>
+          <span>5k Gold:  Heart of Gold +5</span>
         </button>
       </section>
     </main>
