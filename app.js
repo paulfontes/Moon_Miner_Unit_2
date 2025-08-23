@@ -1,11 +1,12 @@
-let cheese = 400;
+let cheese = 4000;
 
 
- let totalCheeseElm = document.getElementById('total-cheese')
- let perClickCheeseElm = document.getElementById('cheese-per-click')
- let totalPickAxes = document.getElementById('total-pickaxes')
- let totalRoversElm = document.getElementById('total-rovers')
- let roverPassiveIncomeElm = document.getElementById('passive-rover')
+let totalCheeseElm = document.getElementById('total-cheese')
+let perClickCheeseElm = document.getElementById('cheese-per-click')
+let totalPickAxes = document.getElementById('total-pickaxes')
+let totalRoversElm = document.getElementById('total-rovers')
+let roverPassiveIncomeElm = document.getElementById('passive-rover')
+let pickaxePriceElm = document.getElementById('pickaxe-price') 
 
  let clickUpgrades = [
     {
@@ -30,10 +31,14 @@ let cheese = 400;
      clickUpgrades.find((pickaxe) => pickaxe.quantity += 1)
      clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
      clickUpgrades.find((price) => cheese -= price.price)
+     clickUpgrades.find((price) => price.price += pricePickaxe * 1.1)
+     console.log(pricePickaxe)
+     console.log(clickUpgrades[0].price)
     drawTotalCheese ()
     console.log('purchased')
     totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
     perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
+    pickaxePriceElm.innerHTML = `${clickUpgrades[0].price} Gold: Champions +1`
     }
  }
 
@@ -91,6 +96,7 @@ function collectAutoUpgrades() {
 setInterval(collectAutoUpgrades, 1500)
 
 function updateCheese () {
+    endGame()
     let totalCheese = 0
     totalCheese = cheese
     console.log('🧀', totalCheese)
@@ -111,6 +117,10 @@ function endGame() {
     window.close()
     }
 }
+
+// function drawPickaxePrice() {
+//     pickaxePriceElm.innerHTML = `<span> ${clickUpgrades[0].price} Gold: Champions +1<span>`
+// }
 
 
 // function drawCheesePerClick() = {
