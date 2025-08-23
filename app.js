@@ -1,4 +1,4 @@
-let cheese = 4000;
+let cheese = 400;
 
 
 let totalCheeseElm = document.getElementById('total-cheese')
@@ -25,27 +25,35 @@ let pickaxePriceElm = document.getElementById('pickaxe-price')
         bonus: 20
     }
  ]
-
+ let priceActualPrice = 0
+ 
  function buyPickaxe(pricePickaxe) {
+
+    if (cheese >= priceActualPrice){
      if(cheese >= pricePickaxe){
-     clickUpgrades.find((pickaxe) => pickaxe.quantity += 1)
-     clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
-     clickUpgrades.find((price) => cheese -= price.price)
-     clickUpgrades.find((price) => price.price += pricePickaxe * 1.1)
-     console.log(pricePickaxe)
+         clickUpgrades.find((pickaxe) => pickaxe.quantity += 1)
+         clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
+         clickUpgrades.find((price) => cheese -= price.price)
+        //  This Part is givin me problems
+        //  clickUpgrades.find((price) => price.price + pricePickaxe - 90)
+        //  console.log(pricePickaxe)
+        //  priceActualPrice = clickUpgrades[0].price
+        //  pricePickaxe = priceActualPrice
      console.log(clickUpgrades[0].price)
     drawTotalCheese ()
-    console.log('purchased')
+    console.log(pricePickaxe)
     totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
     perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
     pickaxePriceElm.innerHTML = `${clickUpgrades[0].price} Gold: Champions +1`
     }
+    }
  }
 
- function buyPickaxe5() {
-     if(cheese > 500){
+ function buyPickaxe5(pricePickaxe5) {
+     if(cheese > pricePickaxe5){
      clickUpgrades.find((pickaxe) => pickaxe.quantity += 5)
      clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
+     clickUpgrades.find((price) => price.price = 100)
      clickUpgrades.find((price) => cheese -= price.price * 5)
     drawTotalCheese ()
     console.log('purchased')
