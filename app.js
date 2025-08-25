@@ -1,12 +1,11 @@
 let cheese = 400;
 
 
-let totalCheeseElm = document.getElementById('total-cheese')
-let perClickCheeseElm = document.getElementById('cheese-per-click')
-let totalPickAxes = document.getElementById('total-pickaxes')
-let totalRoversElm = document.getElementById('total-rovers')
-let roverPassiveIncomeElm = document.getElementById('passive-rover')
-let pickaxePriceElm = document.getElementById('pickaxe-price') 
+ let totalCheeseElm = document.getElementById('total-cheese')
+ let perClickCheeseElm = document.getElementById('cheese-per-click')
+ let totalPickAxes = document.getElementById('total-pickaxes')
+ let totalRoversElm = document.getElementById('total-rovers')
+ let roverPassiveIncomeElm = document.getElementById('passive-rover')
 
  let clickUpgrades = [
     {
@@ -15,16 +14,7 @@ let pickaxePriceElm = document.getElementById('pickaxe-price')
         quantity: 1, 
         bonus: 1
     }
-
-]
-let clickUpgrades5 = [
-    {
-        name: 'pickaxe',
-        price: 500,
-        quantity: 1,
-        bonus: 5
-    }
-]
+ ]
 
  let automaticUpgrades = [
     {
@@ -34,46 +24,34 @@ let clickUpgrades5 = [
         bonus: 20
     }
  ]
- 
- let price1 = 100
- 
+
  function buyPickaxe() {
-    
-     if(cheese >= price1){
-         clickUpgrades.find((pickaxe) => pickaxe.quantity += 1)
-         clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
-         clickUpgrades.find((price) => cheese -= price1)
-        //  clickUpgrades.find((pickaxe) => pickaxe.price = pickaxe.price + 10)
-        //  clickUpgrades.find((pickaxe) => pricePickaxe = pickaxe.price)
-
-        //  This Part is givin me problems
-        //  clickUpgrades.find((price) => price.price + pricePickaxe - 90)
-        //  console.log(pricePickaxe)
-        //  priceActualPrice = clickUpgrades[0].price
-        //  pricePickaxe = priceActualPrice
-     console.log(clickUpgrades[0].price)
-    drawTotalCheese ()
-    console.log()
-    totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
-    perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
-    pickaxePriceElm.innerHTML = `${clickUpgrades[0].price} Gold: Champions +1`
-    }
-    price1 += 100
- }
-
- function buyPickaxe5(pricePickaxe5) {
-     if(cheese > pricePickaxe5){
-     clickUpgrades5.find((pickaxe) => pickaxe.quantity += 5)
-     clickUpgrades5.find((pickaxe) => pickaxe.bonus = pickaxe.quantity * 5 )
-     clickUpgrades5.find((price) => cheese -= pricePickaxe5)
-    //  clickUpgrades5.find((price) => pricePickaxe5 += 100)
-     //  clickUpgrades5.find((pickaxe) => pickaxe.bonus )
-    //  clickUpgrades5.find((price) => cheese -= price.price += 10
-    //  clickUpgrades.find((price) => price.price = 100)
+    // REVIEW find should be used to pull single values out of arrays, not to change values
+    const pickaxe = clickUpgrades.find(u => u.name == 'pickaxe')
+     if(cheese >= pickaxe.price){
+    //  clickUpgrades.find((pickaxe) => pickaxe.quantity += 1)
+    //  clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
+    //  clickUpgrades.find((price) => cheese -= price.price)
+    pickaxe.quantity++
+    pickaxe.bonus++
+    cheese -= pickaxe.price
+    pickaxe.price++
     drawTotalCheese ()
     console.log('purchased')
-    totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades5[0].quantity}`
-    perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades5[0].bonus}`
+    totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
+    perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
+    }
+ }
+
+ function buyPickaxe5() {
+     if(cheese > 500){
+     clickUpgrades.find((pickaxe) => pickaxe.quantity += 5)
+     clickUpgrades.find((pickaxe) => pickaxe.bonus = pickaxe.quantity)
+     clickUpgrades.find((price) => cheese -= price.price * 5)
+    drawTotalCheese ()
+    console.log('purchased')
+    totalPickAxes.innerHTML = `Total Champions: ${clickUpgrades[0].quantity}`
+    perClickCheeseElm.innerHTML = `Gold Per Click: ${clickUpgrades[0].bonus}`
     }
  }
 
@@ -107,7 +85,6 @@ function collectAutoUpgrades() {
         cheese += bonusRoverIncome
         drawTotalCheese ()
         drawPassiveRoverIncome()
-        endGame()
     }
     
 }
@@ -141,10 +118,6 @@ function endGame() {
     }
 }
 
-// function drawPickaxePrice() {
-//     pickaxePriceElm.innerHTML = `<span> ${clickUpgrades[0].price} Gold: Champions +1<span>`
-// }
-
 
 // function drawCheesePerClick() = {
     
@@ -157,4 +130,3 @@ function endGame() {
 
 
 // mine()
-
