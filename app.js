@@ -1,4 +1,4 @@
-let cheese = 4000;
+let cheese = 400;
 
 
 let totalCheeseElm = document.getElementById('total-cheese')
